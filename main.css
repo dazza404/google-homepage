@@ -1,0 +1,370 @@
+/* copied Gio, because to lazy
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+==================
+END OF RESET
+==================
+*/
+
+*{
+    font-family: Arial;
+}
+
+body{
+    overflow: scroll;
+    background-color: #FFFFFF;
+}
+a{
+    text-decoration: none;
+    font-family: Arial;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/*
+================
+HEADER
+================
+*/
+header ul{
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header li {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 8px;
+    font-size: 14px;
+}
+
+header li button{
+    background-color: transparent;
+    box-shadow: transparent;
+    border: transparent;
+    opacity: 0.5;
+}
+
+header li input[type="image"]{
+    height: 36px;
+}
+
+header li a:link{
+    text-decoration: none;
+    color: #555555;
+}
+
+header li a:hover{
+    opacity: 0.9;
+    text-decoration: underline;
+}
+
+header li a:visited{
+    color:#555555
+}
+
+header li button:hover{
+    opacity: 0.7
+}
+
+#message{
+    visibility: hidden;
+    position: absolute;
+    top: 70px;
+    font-family: Arial;
+    font-style: italic;
+    color: #ffffff;
+    font-size: 12px;
+    background-image: linear-gradient(to bottom left, #aa4b6b, #6b6b83, #3b8d99 );
+    border: 1px solid;
+    line-height: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: right;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#message::after{   
+    content: "";
+    border: solid 10px;
+    border-color: transparent transparent #aa4b6b transparent;
+    position: absolute;
+    color: white;
+    top: -20px;
+    right: 18px;
+}
+
+#profile:hover + #message{
+    visibility: visible;
+    opacity: 1;
+}
+
+#profile:active +#message{
+    visibility: visible;
+}
+/*
+================
+SEARCH BAR
+================
+*/
+main img{
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+#search-box{
+    box-sizing: border-box;
+    margin: 25px auto;
+    width: 455px;
+    height: 50px;
+    position: relative;
+    border: 1px solid transparent;
+}
+#search{
+    display: inline-block;
+    position: absolute;
+    height: 40px;
+    width: 400px;
+    border: 1px solid #dddddd;
+    border-radius: 30px;
+    background-image: url(./img/search.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 15px 12px;
+    padding-left: 50px;
+    font-size: 15.5px;
+}
+
+#reset{
+    display: inline-block;
+    visibility: hidden;
+    transition-delay: 0.1s;
+    background-color: #ffffff;
+    position: absolute;
+    right: 50px;
+    top: 8px;
+    background-image: url(./img/close-icon.png);
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: 0px 0px;
+    padding-left: 30px;
+    width: 25px;
+    height: 25px;
+    border: solid 1px;
+    border-color:transparent #dddddd transparent transparent;
+}
+
+#search:focus + #reset {
+    visibility: visible;
+}
+
+#search:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px #dddddd;
+}
+
+#search:hover{
+    box-shadow: 0px 0px 5px #dddddd;
+}
+
+#mic{
+    position: absolute;
+    top: 12px;
+    right: 25px;
+    width: 13px;
+}
+
+#tooltip-text{
+    visibility: hidden;
+    font-size: 11px;
+    color: #FFFFFF;
+    background-color: #333333;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    right: -18px;
+    padding: 7px 8px;
+  }
+
+  #tooltip-text::after{
+    content: "";
+    color: black;
+    position: absolute;
+    bottom: 100%;
+    border: solid 5px;
+    border-color: transparent transparent#333333 transparent;
+    margin-left: -5px;
+    left: 50%;
+  }
+
+  #tooltip:hover #tooltip-text{
+      visibility: visible;
+  }
+
+  #tooltip:active{
+      visibility: visible;
+  }
+
+  /*
+================
+MIDDLE BUTTONS
+================
+*/
+
+.others{
+    display: flex;
+    justify-content: center;
+}
+
+.others button{
+    box-sizing: border-box;
+    margin: 10px 5px;
+    padding: 8px 12px;
+    border: solid 1px;
+    border-color: #efefef;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #666666;
+    background-color: #efefef;
+
+}
+.others button:hover{
+    border: solid 1px #bbbbbb;
+    background-color: #f1f1f1;
+    color: #333333;
+}
+main p{
+    margin: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #333333;
+}
+p a{
+    margin: 0 5px;
+}
+p a:link{
+    color: #4411bb;
+}
+a:hover{
+    text-decoration: underline;
+}
+p a:visited{
+    color: #4411bb;
+}
+
+  /*
+================
+FOOTER
+================
+*/
+
+footer{
+    /*border-top: 1px solid #bbbbbb;*/
+    position: absolute;
+    bottom: 0px;
+    width:100%;
+    background-color: #efefef;
+    border-top: #dddddd solid 1px;
+    display:flex;
+    flex-direction: column;
+}
+
+#location{
+    float:left;
+    font-family: Arial;
+    color: #888888;
+    font-size: 15px;
+    padding: 12px;
+    margin-left: 10px;
+}
+
+footer nav{
+    overflow: hidden;
+    background-color: #efefef;
+    border-top: 1px solid #dddddd;
+
+}
+
+footer nav ul li{
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 10px 10px;
+    font-size: 14px;
+}
+
+footer nav a{
+    font-family: Arial;
+    color: #666666
+}
+
+.left{
+    clear: left;
+    float: left;
+    margin-left: 10px;
+}
+
+.right{
+    clear: right;
+    float: right;
+}
